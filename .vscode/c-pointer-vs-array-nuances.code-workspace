@@ -4,5 +4,24 @@
 			"path": ".."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"markdownlint.config": {
+			"default": true,
+			"MD003": {
+				"style": "atx"
+			},
+			"MD007": {
+				"indent": 2
+			},
+			"MD033": {
+				"allowed_elements": [
+					"sub",
+					"sup",
+					"kbd"
+				]
+			},
+			"MD046": false,
+			"no-hard-tabs": false
+		}
+	}
 }
