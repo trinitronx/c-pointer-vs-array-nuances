@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "ptr-vs-array: Debug Build",
+            "detail": "Run gcc build command",
+            "type": "shell",
+            "icon": {"id": "package"},
+            "command": "intercept-build --append gcc -std=c11 -g -o ptr-vs-array ptr-vs-array.c",
+            "group": "build",
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": ["absolute"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "ptr-vs-array: Clean",
+            "detail": "Manual clean command",
+            "type": "shell",
+            "icon": {"id": "trash"},
+            "command": "rm -f ptr-vs-array compile_commands.json",
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        }
+    ]
+}

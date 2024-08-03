@@ -1,0 +1,75 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug ptr-vs-array with gdb",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ptr-vs-array",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "LD_LIBRARY_PATH",
+                    "value": "${workspaceFolder}"
+                }
+            ],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Break on fork()",
+                    "text": "catch fork",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Continue being attached to both parent & child proceses",
+                    "text": "set detach-on-fork off",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Follow child process",
+                    "text": "set follow-fork-mode child",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "ptr-vs-array: Debug Build",
+            "miDebuggerPath": "/usr/bin/gdb"
+        },
+        {
+            "name": "Debug ptr-vs-array with LLDB",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ptr-vs-array",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [
+                {
+                    "name": "LD_LIBRARY_PATH",
+                    "value": "${workspaceFolder}"
+                }
+            ],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "type summary add --expand --python-script \"sys.path.append('/usr/lib/python3.12/site-packages/'); import lldbinit; lldbinit.lldbcommands()\" --category OpenSSL",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "ptr-vs-array: Debug Build",
+            "miDebuggerPath": "/usr/bin/lldb-mi"
+        }
+    ]
+}
