@@ -1,0 +1,4 @@
+ptr-vs-array
+ptr-vs-array-asm-test
+*.o
+*.s

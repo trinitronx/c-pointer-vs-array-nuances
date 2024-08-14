@@ -25,5 +25,6 @@ inspect: ptr-vs-array-asm-test
 	objdump -d "ptr-vs-array-asm-test"
 	hexdump -C "ptr-vs-array-asm-test"
 
+# Unecessary to do this, but in case you want to inspect the .o file
 $(OBJS): $(SOURCES)
 
