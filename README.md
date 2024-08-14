@@ -55,7 +55,7 @@ by:
 
 - Opening the project in VS Code.
 - Use one of the following:
-  - VSCode Tasks:
+  - VSCode Tasks: (pick one)
     - Pressing <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> (or
       <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> on macOS) to run the build
       task.
