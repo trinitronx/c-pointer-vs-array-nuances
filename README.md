@@ -69,7 +69,7 @@ by:
         - `ptr-vs-array`: A normal optimized (`-O2`) binary executable with debugging information.
         - `ptr-vs-array-asm-test`: An unoptimized  (`-O0`) binary executable without debugging information (easier to inspect & disassemble).
         - `ptr-vs-array.o`: The object file used when linking the normal binary executable.
-        - `ptr-vs-array.s`: An assembler listing, created during compilation of `ptr-vs-array-asm-test`.  Look at this to see what your `$(CC)` compiler is generating.
+        - `ptr-vs-array.s`: An assembler listing, created during compilation of `ptr-vs-array-asm-test`.  Look at this to see what assembly code your `$(CC)` compiler is generating.
           - The assembler (`as -a[sub-option...]`) sub-options used are:
             - `d`: omit debugging directives
             - `h`: include high-level source
