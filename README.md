@@ -55,11 +55,33 @@ by:
 
 - Opening the project in VS Code.
 - Use one of the following:
-  - Pressing <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> (or
-    <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> on macOS) to run the build
-    task.
-  - Open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> or
-    <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on macOS).
+  - VSCode Tasks: (pick one)
+    - Pressing <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> (or
+      <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> on macOS) to run the build
+      task.
+    - Open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> or
+      <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on macOS).
+  - GNU `make`:
+    - To build all (including assembly + object files for inspection):
+
+          make
+      - This will build:
+        - `ptr-vs-array`: A normal optimized (`-O2`) binary executable with debugging information.
+        - `ptr-vs-array-asm-test`: An unoptimized  (`-O0`) binary executable without debugging information (easier to inspect & disassemble).
+        - `ptr-vs-array.o`: The object file used when linking the normal binary executable.
+        - `ptr-vs-array.s`: An assembler listing, created during compilation of `ptr-vs-array-asm-test`.  Look at this to see what assembly code your `$(CC)` compiler is generating.
+          - The assembler (`as -a[sub-option...]`) sub-options used are:
+            - `d`: omit debugging directives
+            - `h`: include high-level source
+            - `l`: include assembly
+            - `n`: omit forms processing
+    - To build just the normal binary executable:
+
+          make ptr-vs-array
+
+    - To inspect the test binary with `objdump` & `hexdump`:
+
+          make inspect
 
 Alternatively, you can build it manually using GCC:
 
@@ -92,6 +114,8 @@ This will remove the compiled binary and any generated compilation database JSON
 
 - GCC compiler
 - GDB or LLDB debugger
+- GNU Make
+  - optional, for using the provided `Makefile` rules.
 - VS Code
   - optional, for using the provided tasks and launch configurations
   - If using this, ensure you install the Python `intercept-build` tool from the
